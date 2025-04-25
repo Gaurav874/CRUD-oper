@@ -19,7 +19,7 @@ const View = () => {
 
 
   return (
-    <div >
+    <div style={{border:'2px solid yellow'}}>
       <h1>Show Data</h1>
       <table>
         <tr>
