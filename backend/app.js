@@ -87,17 +87,26 @@ app.put('/users/:id/',async(req,res) => {
 
 
 
-app.delete('/users/:id',(req,res) => {
-    const uid=req.params.id;
-    const userIndex=users.findIndex(user=>user.id==uid);
-    if(userIndex==-1){
-        res.status(404).json({message: 'user not found'});
+app.delete('/users/:id',async(req,res) => {
+    // const uid=req.params.id;
+    // const userIndex=users.findIndex(user=>user.id==uid);
+    // if(userIndex==-1){
+    //     res.status(404).json({message: 'user not found'});
+    // }
+    // else{
+    //     users.splice(userIndex,1);
+    //     writedata();
+    //     res.status(200).json({message: 'user deleted successfully',data: users[userIndex]});
+    // }  
+    const uid = req.params.id;
+    const data = await student.findOne({id : uid})
+    if(data==null){
+        res.json({message:"id is not found"});
     }
-    else{
-        users.splice(userIndex,1);
-        writedata();
-        res.status(200).json({message: 'user deleted successfully',data: users[userIndex]});
-    }  
+    console.log(data);
+    await data.deleteOne();
+    res.json({message:"delete successfully"});
+
 })
 app.listen(9000,()=>{
     console.log('Server is running on port 9000')
