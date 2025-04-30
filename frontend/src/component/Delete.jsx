@@ -5,7 +5,7 @@ const Delete = () => {
     const handledelete=async(e)=>{
         e.preventDefault()
         const id = e.target.id.value;
-        await axios.delete(`http://localhost:9000/users/${id}`)
+        await axios.delete(`https://crud-oper.onrender.com/users/${id}`)
         alert("data delete Successfully")
     }
   return (

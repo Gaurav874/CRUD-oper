@@ -10,7 +10,7 @@ const View = () => {
 
     const viewdata = async () => {
         try {
-          const res = await axios.get('http://localhost:9000/users'); // Backend ka correct endpoint use karna
+          const res = await axios.get('https://crud-oper.onrender.com/users'); // Backend ka correct endpoint use karna
           setUsers(res.data);
         } catch (error) {
           console.error("Error fetching users:", error);
